@@ -12,7 +12,7 @@ public class TafelLoop {
         var input1 = input.nextInt();
 
         System.out.println();
-        System.out.println("Ik zal het voor je in een tafel omrekenen!");
+        System.out.println("Ik zal " + input1 + " voor je tot in een tafel omrekenen!");
 
         for(var multiplicationNumber = 1; multiplicationNumber <=10; multiplicationNumber++){
             System.out.println(multiplicationNumber + " x " + input1 + " = " + input1 * multiplicationNumber);
@@ -29,7 +29,7 @@ public class TafelLoop {
         var input2 = input.nextInt();
 
         System.out.println();
-        System.out.println("Dit zal geen leuke tafel voor je worden!");
+        System.out.println("Ow jeej! " + input2 + "! Dit zal geen leuke tafel voor je worden!");
 
         for(var year = 1; year <= 10; year++){
             System.out.format("%d %s %d %s %d %n", year, " x ", input2, " = ", input2*year);
