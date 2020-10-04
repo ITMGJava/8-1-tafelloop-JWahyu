@@ -3,41 +3,45 @@ import java.util.Scanner;
 public class TafelLoop {
     public static void main(String[] args) {
 
-        // Tafel met invoer.
-
-        System.out.println("Wat is je lievelingsgetal?");
+        // Tafel inclusief validatie met j/n en variabel Int met invoervalidatie.
 
         var input = new Scanner(System.in);
 
-        var input1 = input.nextInt();
+        boolean check = false;
+        while (!check) { // Valideer met j/n voor nieuw of stop programma.
+            System.out.printf("%nWil je een nieuwe getal tot een tafel omrekenen? Druk 'j' for ja of 'n' for nee om te stoppen.%n");
+            var inputExit = input.next();
 
-        System.out.println();
-        System.out.println("Ik zal " + input1 + " voor je tot in een tafel omrekenen!");
+            if (inputExit.equalsIgnoreCase("j")) { // Validatie j: nieuw / herhaal programma.
 
-        for(var multiplicationNumber = 1; multiplicationNumber <=10; multiplicationNumber++){
-            System.out.println(multiplicationNumber + " x " + input1 + " = " + input1 * multiplicationNumber);
-        }
 
-        System.out.println();
-        System.out.println("―――――――――――――――――――――");
-        System.out.println();
+                boolean checkInt = false;
+                while (!checkInt) { // Invoer variabel met geldigheid check.
+                    System.out.printf("%nWat is je lievelingsgetal?%n");
 
-        // Tweede tafel met invoer en alternatief code.
+                    if (input.hasNextInt()) {
+                        int x = input.nextInt();
+                        System.out.printf("%nTafel van %d:%n", x);
 
-        System.out.println("Welk getal vind je niet leuk?");
+                        for (var y = 1; y <= 10; y++) { // Tafel van variabele input.
+                            System.out.printf("%d x %d = %d%n", y, x, x * y);
+                        }
+                        checkInt = true;
 
-        var input2 = input.nextInt();
+                    } else { // Ongeldige invoer.
+                        System.out.printf("Geen geldige invoer. Probeer het nogmaals.%n");
+                        input.next();
+                        checkInt = false;
+                    }
+                } // Einde while (!checkInt) Invoer variabel met geldigheid check.
 
-        System.out.println();
-        System.out.println("Ow jeej! " + input2 + "! Dit zal geen leuke tafel voor je worden!");
-
-        for(var year = 1; year <= 10; year++){
-            System.out.format("%d %s %d %s %d %n", year, " x ", input2, " = ", input2*year);
-        }
-
-        System.out.println();
-
-        // Humor.
-        System.out.println("Bah!");
-    }
-}
+            } else if (inputExit.equalsIgnoreCase("n")) { // Validatie n: einde programma.
+                System.out.printf("%nDat was het dan. Dank en tot ziens! :)%n");
+                check = true;
+            } else { // Ongeldige invoer.
+                System.out.printf("Geen geldige invoer. Probeer het nogmaals.%n");
+                check = false;
+            }
+        } // Einde while (check).
+    } // Einde public static void main(String[] args)
+} // Einde public class TafelLoop
